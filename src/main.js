@@ -14,7 +14,7 @@ if (token) {
 const app = createApp(App);
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://13.53.107.44';  // the FastAPI backend
+axios.defaults.baseURL = 'http://13.50.233.11';  // the FastAPI backend
 
 app.use(router);
 app.use(store);
