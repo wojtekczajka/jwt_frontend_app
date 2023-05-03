@@ -133,6 +133,8 @@ export default {
                 console.log("here!");
             }
             this.publicResources = await this.getResources('/resource/public');
+            console.log(this.publicResources);
+            console.log('elo');
         },
         deleteUser(userId) {
             axios.delete('/user/', {
