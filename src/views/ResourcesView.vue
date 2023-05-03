@@ -126,9 +126,11 @@ export default {
             console.log(this.roles);
             console.log("---------------------");
             if (this.isProfileLoaded && this.roles.includes("Admin")) {
+                console.log("trace1");
                 this.adminResources = await this.getResources('/resource/admin');
             }
             if (this.isProfileLoaded && this.roles.includes("User")) {
+                console.log("trace2");
                 this.userResources = await this.getResources('/resource/user');
                 console.log("here!");
             }
