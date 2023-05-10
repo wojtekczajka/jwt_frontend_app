@@ -108,10 +108,10 @@ export default {
 
     methods: {
         getRoleNames,
-        async getResources(url, token) {
+        async getResources(endpoint, token) {
             try {
                 this.loading = true;
-                const response = await axios.get(url, { token });
+                const response = await axios.get(`${axios.defaults.baseURL}${endpoint}`, { token });
                 return response.data;
             } catch (error) {
                 console.error(error);
