@@ -111,7 +111,9 @@ export default {
         async getResources(endpoint, token) {
             try {
                 this.loading = true;
-                const response = await axios.get(`${axios.defaults.baseURL}${endpoint}`, { token });
+                const url = `${axios.defaults.baseURL}${endpoint}`;
+                console.log("url: ", url);
+                const response = await axios.get(url, { token });
                 return response.data;
             } catch (error) {
                 console.error(error);
@@ -125,6 +127,8 @@ export default {
             console.log(this.isProfileLoaded);
             console.log(this.roles);
             console.log("---------------------");
+            this.publicResources = await this.getResources('/resource/public');
+            console.log(this.publicResources);
             if (this.isProfileLoaded && this.roles.includes("Admin")) {
                 console.log("trace1");
                 this.adminResources = await this.getResources('/resource/admin');
@@ -134,9 +138,6 @@ export default {
                 this.userResources = await this.getResources('/resource/user');
                 console.log("here!");
             }
-            this.publicResources = await this.getResources('/resource/public');
-            console.log(this.publicResources);
-            console.log('elo');
         },
         deleteUser(userId) {
             axios.delete('/user/', {
