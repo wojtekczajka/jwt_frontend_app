@@ -111,9 +111,7 @@ export default {
         async getResources(endpoint, token) {
             try {
                 this.loading = true;
-                const url = `${axios.defaults.baseURL}${endpoint}`;
-                console.log("url: ", url);
-                const response = await axios.get(url, { token });
+                const response = await axios.get(endpoint, { token });
                 return response.data;
             } catch (error) {
                 console.error(error);
