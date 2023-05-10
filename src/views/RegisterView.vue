@@ -55,7 +55,6 @@ export default {
 
                 })
                 .catch(error => {
-                    console.log(error);
                     if (error.response.status !== 200) {
                         alert("Error signing up. Please try again.");
                     }
