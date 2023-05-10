@@ -15,6 +15,12 @@ const app = createApp(App);
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'https://fastapijwt-1-e5905818.deta.app';  // the FastAPI backend
+axios.interceptors.request.use(function(config) {
+  // change the url scheme from http to https
+  config.url = config.url.replace('http://', 'https://')
+
+  return config
+})
 
 app.use(router);
 app.use(store);
