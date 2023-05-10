@@ -24,7 +24,7 @@ const actions = {
     [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
         return new Promise((resolve, reject) => {
             commit(AUTH_REQUEST);
-            axios.post("/auth/signin", user)
+            axios.post("/auth/signin/", user)
                 .then(resp => {
                     localStorage.setItem("user-token", resp.data.access_token);
                     // localStorage.setItem("user-token-exp", resp.data.access_token_exp);

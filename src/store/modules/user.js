@@ -12,7 +12,7 @@ const getters = {
 const actions = {
   [USER_REQUEST]: ({ commit, dispatch }) => {
     commit(USER_REQUEST);
-    axios.get("/user")
+    axios.get("/user/")
       .then(resp => {
         commit(USER_SUCCESS, resp);
       })

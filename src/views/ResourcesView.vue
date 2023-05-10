@@ -125,15 +125,15 @@ export default {
             console.log(this.isProfileLoaded);
             console.log(this.roles);
             console.log("---------------------");
-            this.publicResources = await this.getResources('/resource/public');
+            this.publicResources = await this.getResources('/resource/public/');
             console.log(this.publicResources);
             if (this.isProfileLoaded && this.roles.includes("Admin")) {
                 console.log("trace1");
-                this.adminResources = await this.getResources('/resource/admin');
+                this.adminResources = await this.getResources('/resource/admin/');
             }
             if (this.isProfileLoaded && this.roles.includes("User")) {
                 console.log("trace2");
-                this.userResources = await this.getResources('/resource/user');
+                this.userResources = await this.getResources('/resource/user/');
                 console.log("here!");
             }
         },
@@ -144,7 +144,7 @@ export default {
                 .then(response => {
                     if (response) {
                         alert("User deleted successfully");
-                        return this.getResources('/resource/admin');
+                        return this.getResources('/resource/admin/');
                     } else {
                         alert("Error deleting user. Please try again.");
                     }
@@ -162,7 +162,7 @@ export default {
                 .then(response => {
                     if (response) {
                         alert("User activated successfully");
-                        return this.getResources('/resource/admin');
+                        return this.getResources('/resource/admin/');
                     } else {
                         alert("Error activating user. Please try again.");
                     }
