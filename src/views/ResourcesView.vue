@@ -94,7 +94,7 @@ export default {
     computed: {
         ...mapGetters(["getProfile", "isAuthenticated", "isProfileLoaded"]),
         ...mapState({
-            roles: state => `${getRoleNames(state.user.profile.roles, state.isProfileLoaded)}`,
+            roles: state => `${getRoleNames(state.user.profile.roles, this.isProfileLoaded)}`,
         }),
     },
 
