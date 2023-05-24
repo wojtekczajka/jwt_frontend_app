@@ -28,7 +28,6 @@ const actions = {
                 .then(resp => {
                     localStorage.setItem("user-token", resp.data.access_token);
                     // localStorage.setItem("user-token-exp", resp.data.access_token_exp);
-                    axios.defaults.headers.common['x-access-token'] = resp.data.access_token;
                     commit(AUTH_SUCCESS, resp);
                     dispatch(USER_REQUEST);
                     resolve(resp);
