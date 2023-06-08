@@ -7,9 +7,9 @@ import router from './router';
 import store from './store';
 
 const token = localStorage.getItem('user-token')
-// if (token) {
-//   axios.defaults.headers.common['x-access-token'] = token  // this code of block prevent user logout - after refresh
-// }
+if (token) {
+  axios.defaults.headers.common['Authorization'] = "Bearer " + token;  // this code of block prevent user logout - after refresh
+}
 
 const app = createApp(App);
 
