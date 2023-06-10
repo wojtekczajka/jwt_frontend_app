@@ -13,7 +13,7 @@ if (token) {
 
 const app = createApp(App);
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 axios.defaults.baseURL = 'https://fastapi-server-ezey.onrender.com';  // the FastAPI backend
 axios.interceptors.request.use(function (config) {
   // change the url scheme from http to https
