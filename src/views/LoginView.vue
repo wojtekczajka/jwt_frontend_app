@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 import { AUTH_REQUEST } from "../store/actions/auth";
 
 export default {
@@ -60,17 +60,7 @@ export default {
         });
     },
     handleGoogleLogin() {
-      axios.get("/auth/google_signin/")
-        .then(() => {
-          // Handle successful Google login
-          alert("Google login successful!");
-          this.$router.push("/");
-        })
-        .catch((error) => {
-          // Handle error during Google login
-          alert("Error during Google login. Please try again.");
-          console.log(error);
-        });
+      window.location.href = "https://fastapi-server-ezey.onrender.com/auth/google_signin/";
     }
   }
 };
