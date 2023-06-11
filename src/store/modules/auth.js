@@ -29,7 +29,7 @@ const actions = {
                     localStorage.setItem("user-token", resp.data.access_token);
                     // localStorage.setItem("user-token-exp", resp.data.access_token_exp);
                     axios.defaults.headers.common['Authorization'] = "Bearer " + resp.data.access_token;
-                    commit(AUTH_SUCCESS, resp);
+                    commit(AUTH_SUCCESS, resp.data.access_token);
                     dispatch(USER_REQUEST);
                     resolve(resp);
                 })
@@ -54,9 +54,9 @@ const mutations = {
     [AUTH_REQUEST]: state => {
         state.status = "loading";
     },
-    [AUTH_SUCCESS]: (state, resp) => {
+    [AUTH_SUCCESS]: (state, token) => {
         state.status = "success";
-        state.token = resp.data.access_token;
+        state.token = token;
         // state.token_exp = resp.data.access_token_exp;
         state.hasLoadedOnce = true;
     },

@@ -31,6 +31,7 @@
 <script>
 import axios from "axios";
 import { AUTH_REQUEST } from "../store/actions/auth";
+import { AUTH_SUCCESS } from "../store/actions/auth";
 import { USER_REQUEST } from "../store/actions/user";
 
 export default {
@@ -67,6 +68,7 @@ export default {
       const accessToken = this.$route.query.access_token;
       if (accessToken) {
         this.$store.commit(AUTH_REQUEST);
+        this.$store.commit(AUTH_SUCCESS, accessToken);
         axios.defaults.headers.common['Authorization'] = "Bearer " + accessToken;
         this.$store.dispatch(USER_REQUEST)
           .then(() => {
