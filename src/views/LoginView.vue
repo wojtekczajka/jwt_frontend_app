@@ -29,8 +29,9 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 import { AUTH_REQUEST } from "../store/actions/auth";
+import { USER_REQUEST } from "../store/actions/user";
 
 export default {
   name: "LoginView",
@@ -61,7 +62,26 @@ export default {
     },
     handleGoogleLogin() {
       window.location.href = "https://fastapi-server-ezey.onrender.com/auth/google_signin/";
+    },
+    checkAccessToken() {
+      const accessToken = this.$route.query.access_token;
+      if (accessToken) {
+        this.$store.commit(AUTH_REQUEST);
+        axios.defaults.headers.common['Authorization'] = "Bearer " + accessToken;
+        this.$store.dispatch(USER_REQUEST)
+          .then(() => {
+            alert("You have been successfully logged in :)");
+            this.$router.push("/");
+          })
+          .catch((error) => {
+            alert("Error logging in. Please try again.");
+            console.log(error);
+          });
+      }
     }
+  },
+  mounted() {
+    this.checkAccessToken();
   }
 };
 </script>
